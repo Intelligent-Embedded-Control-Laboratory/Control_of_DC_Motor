@@ -48,7 +48,7 @@ private:
     long count;
 };
 
-class LS7366R_Dev
+class LS7366R_Dev /* 2022-07-30 Test */
 {
 public:
     LS7366R_Dev(unsigned char _pin_slave, unsigned char mdr0_conf = MDR0_CONF, unsigned char mdr1_conf = MDR1_CONF)
