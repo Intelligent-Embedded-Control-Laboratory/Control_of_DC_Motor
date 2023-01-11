@@ -11,7 +11,7 @@
 
 #define ENC_LEFT 10                                    // 第一個 Encoder 的腳位
 #define ENC_RIGHT 10                                   // 第二個 Encoder 的腳位
-LS7366R enc(ENC_LEFT, ENC_LEFT, MDR0_CONF, MDR1_CONF); // 它可以同時解兩個 Encoder，只需要一個腳位
+LS7366R enc(ENC_LEFT, ENC_RIGHT, MDR0_CONF, MDR1_CONF); // 它可以同時解兩個 Encoder，只需要一個腳位
 
 // Variable Declaration
 long int pos_1 = 0;

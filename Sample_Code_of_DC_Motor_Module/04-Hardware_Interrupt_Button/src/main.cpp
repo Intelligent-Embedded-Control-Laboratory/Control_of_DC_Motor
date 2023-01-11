@@ -1,5 +1,5 @@
 /*
-    Sample Code for using Hardward Interrupts
+    Sample Code for using Hardware Interrupts
 
     Yang-Rui Li
     2021-11-21
@@ -18,7 +18,7 @@ void setup()
 {
     Serial.begin(115200); // 開啟序列埠傳輸，設定 baud rate 為115200
 
-    // 設定外部中斷: BUTTON_1 這個接角在電壓 FALLING 的時候，執行 'ISR_Hardware_Button_1' 這個副程式
+    // 設定外部中斷: BUTTON_1 這個接角在電壓 FALLING 的時候，執行 'ISR_Hardware_Button_1()' 這個副程式
     // Teensy and ESP32
     // 中斷腳位就是 GPIO 腳位，所以有沒有加 digitalPinToInterrupt() 都沒關係
     //      attachInterrupt(BUTTON_1, ISR_Hardware_Button_1, FALLING); << 合法
@@ -40,7 +40,9 @@ void ISR_Hardware_Button_1()
     // 這個副程式，主要用於切換 LED 的狀態，也就是說利用這個函數來達成 LED 的閃爍控制
     LED_Status = !LED_Status;
 
-    digitalWrite(LED_BUILTIN, LED_Status);
-
-    Serial.print("Hello " + String(LED_Status));
+    // digitalWrite(LED_BUILTIN, LED_Status);
+    digitalToggle(LED_BUILTIN);
+    // digitalWrite(LED_BUILTIN, !digitalRead(LED_BUILTIN));
+    
+    Serial.println("Hello " + String(LED_Status));
 }
