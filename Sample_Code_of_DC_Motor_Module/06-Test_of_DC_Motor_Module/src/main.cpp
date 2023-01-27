@@ -106,14 +106,14 @@ void isr_main_loop()
     pos_pre = pos;
 
     motor_pwm_cmd = motor_pwm_cmd_max * 0.5;
+    if (abs(motor_pwm_cmd) >= motor_pwm_cmd_max)
+    {
+        motor_pwm_cmd = motor_pwm_cmd_max * sign(motor_pwm_cmd);
+    }
 
     // 馬達命令
     if (system_enable) // 只有在 system_enable 為 true 的時候才會做命令的更新
     {
-        if (abs(motor_pwm_cmd) >= motor_pwm_cmd_max)
-        {
-            motor_pwm_cmd = motor_pwm_cmd_max * sign(motor_pwm_cmd);
-        }
         motor_pwm_update(motor_pwm_cmd);
     }
     else
